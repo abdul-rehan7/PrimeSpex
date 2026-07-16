@@ -43,21 +43,21 @@ export function Hero() {
           ))}
         </video>
         {/* Dark mask to lower opacity and ensure text readability */}
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black" />
+        <div className="absolute inset-0 bg-black/40 md:bg-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black md:from-black/50" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto w-[90%] max-w-4xl pt-16 text-center md:w-[65vw] md:pt-0">
-          <h1 className="fade-up text-balance text-2xl font-semibold leading-[1.1] tracking-tight md:text-5xl">
+          <h1 className="fade-up text-balance text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl">
             Software engineered
             <br />
             <span className="text-muted-foreground">for ambitious teams.</span>
           </h1>
 
-          <p className="fade-up mt-6 text-balance text-sm text-muted-foreground md:text-lg">
-            We design and build premium digital products — from web platforms to
-            design systems and intelligent automation — with a relentless focus
+          <p className="fade-up mt-6 text-balance text-base text-muted-foreground md:text-lg">
+            We design and build premium digital products from web platforms to
+            design systems and intelligent automation with a relentless focus
             on craft and performance.
           </p>
 

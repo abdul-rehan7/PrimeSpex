@@ -35,10 +35,10 @@ export function SiteHeader() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-base font-semibold tracking-tight md:text-lg">
+          <span className="text-lg font-semibold tracking-tight md:text-lg">
             NexusFlow
           </span>
-          <span className="text-base font-light text-muted-foreground md:text-lg">
+          <span className="text-lg font-light text-muted-foreground md:text-lg">
             Labs
           </span>
         </Link>
@@ -67,7 +67,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </nav>
