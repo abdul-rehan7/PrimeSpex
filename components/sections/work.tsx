@@ -6,6 +6,21 @@ import type { Portfolio } from '@/lib/types';
 
 export async function Work() {
   const supabaseServer = createSupabaseServer();
+
+  if (!supabaseServer) {
+    return (
+      <section id="work" className="py-24 md:py-40">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="rounded-xl border border-dashed border-border/60 py-20 text-center">
+            <p className="text-sm text-muted-foreground">
+              Projects will appear here once published from the admin dashboard.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const { data: projects } = await supabaseServer
     .from('portfolio')
     .select('*')
