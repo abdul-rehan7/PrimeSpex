@@ -48,14 +48,14 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto w-[90%] max-w-4xl text-center md:w-[65vw]">
-          <h1 className="fade-up text-balance text-3xl font-semibold leading-[1.1] tracking-tight md:text-5xl">
+        <div className="mx-auto w-[90%] max-w-4xl pt-16 text-center md:w-[65vw] md:pt-0">
+          <h1 className="fade-up text-balance text-2xl font-semibold leading-[1.1] tracking-tight md:text-5xl">
             Software engineered
             <br />
             <span className="text-muted-foreground">for ambitious teams.</span>
           </h1>
 
-          <p className="fade-up mt-6 text-balance text-base text-muted-foreground md:text-lg">
+          <p className="fade-up mt-6 text-balance text-sm text-muted-foreground md:text-lg">
             We design and build premium digital products — from web platforms to
             design systems and intelligent automation — with a relentless focus
             on craft and performance.

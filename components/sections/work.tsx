@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { supabaseServer } from '@/lib/supabase/server';
+import { createSupabaseServer } from '@/lib/supabase/server';
 import type { Portfolio } from '@/lib/types';
 
 export async function Work() {
+  const supabaseServer = createSupabaseServer();
   const { data: projects } = await supabaseServer
     .from('portfolio')
     .select('*')
