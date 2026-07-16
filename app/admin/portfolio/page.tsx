@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AdminShell } from '@/components/admin-shell';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import { createProject, updateProject, deleteProject } from '@/lib/portfolio';
 import type { Portfolio } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -65,7 +65,7 @@ export default function PortfolioPage() {
   const router = useRouter();
 
   const fetchProjects = async () => {
-    const { data } = await supabase
+    const { data } = await getSupabase()
       .from('portfolio')
       .select('*')
       .order('created_at', { ascending: false });

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -23,14 +23,14 @@ export function AuthForm() {
 
     try {
       if (mode === 'signup') {
-        const { error } = await supabase.auth.signUp({ email, password });
+        const { error } = await getSupabase().auth.signUp({ email, password });
         if (error) throw error;
         // Auto sign-in after signup (email confirmation is off)
         const { error: signInError } =
-          await supabase.auth.signInWithPassword({ email, password });
+          await getSupabase().auth.signInWithPassword({ email, password });
         if (signInError) throw signInError;
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { error } = await getSupabase().auth.signInWithPassword({
           email,
           password,
         });

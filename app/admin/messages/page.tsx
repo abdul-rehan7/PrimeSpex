@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from 'react';
 import { AdminShell } from '@/components/admin-shell';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import type { Contact } from '@/lib/types';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -38,7 +38,7 @@ export default function MessagesPage() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase
+      const { data } = await getSupabase()
         .from('contacts')
         .select('*')
         .order('created_at', { ascending: false });
@@ -78,7 +78,7 @@ export default function MessagesPage() {
 
   const handleDelete = async (id: string) => {
     setDeleting(id);
-    await supabase.from('contacts').delete().eq('id', id);
+    await getSupabase().from('contacts').delete().eq('id', id);
     setMessages((prev) => prev.filter((m) => m.id !== id));
     setDeleting(null);
   };

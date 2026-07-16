@@ -5,6 +5,8 @@ import { Services } from '@/components/sections/services';
 import { Work } from '@/components/sections/work';
 import { Contact } from '@/components/sections/contact';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <>

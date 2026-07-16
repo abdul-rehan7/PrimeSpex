@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -33,7 +33,7 @@ export function ContactForm() {
     }
 
     startTransition(async () => {
-      const { error: insertError } = await supabase
+      const { error: insertError } = await getSupabase()
         .from('contacts')
         .insert({ name, email, message });
 

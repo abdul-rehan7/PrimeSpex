@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { AdminShell } from '@/components/admin-shell';
-import { supabase } from '@/lib/supabase/client';
+import { getSupabase } from '@/lib/supabase/client';
 import { MessageSquare, FolderKanban, ArrowRight } from 'lucide-react';
 
 export default function AdminDashboard() {
@@ -13,8 +13,8 @@ export default function AdminDashboard() {
   useEffect(() => {
     (async () => {
       const [{ count: messages }, { count: projects }] = await Promise.all([
-        supabase.from('contacts').select('*', { count: 'exact', head: true }),
-        supabase.from('portfolio').select('*', { count: 'exact', head: true }),
+        getSupabase().from('contacts').select('*', { count: 'exact', head: true }),
+        getSupabase().from('portfolio').select('*', { count: 'exact', head: true }),
       ]);
       setStats({
         messages: messages ?? 0,
