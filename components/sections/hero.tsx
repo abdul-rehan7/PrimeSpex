@@ -48,7 +48,7 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto w-[90%] max-w-4xl pt-16 text-center md:w-[65vw] md:pt-0">
+        <div className="mx-auto w-[90%] max-w-4xl text-center md:w-[65vw]">
           <h1 className="fade-up text-balance text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl">
             Software engineered
             <br />
