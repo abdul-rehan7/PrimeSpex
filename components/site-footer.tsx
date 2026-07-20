@@ -21,14 +21,11 @@ export function SiteFooter() {
           <div>
             <Link href="/" className="flex items-center gap-2">
               <span className="text-base font-semibold tracking-tight">
-                NexusFlow
-              </span>
-              <span className="text-base font-light text-muted-foreground">
-                Labs
+                PrimeSpex
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Premium software product engineering for ambitious teams.
+              Your Business Solutions Partner.
             </p>
           </div>
 
@@ -57,7 +54,7 @@ export function SiteFooter() {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border/60 pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} NexusFlow Labs.{' '}
+            © {new Date().getFullYear()} PrimeSpex.{' '}
             <Link
               href="/admin"
               className="transition-colors hover:text-foreground"

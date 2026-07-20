@@ -6,14 +6,14 @@ import { ThemeProvider } from '@/components/theme-provider';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nexusflowlabs.com'),
-  title: 'NexusFlow Labs — Premium Software Agency',
+  metadataBase: new URL('https://primespex.com'),
+  title: 'PrimeSpex — Your Business Solutions Partner',
   description:
-    'NexusFlow Labs designs and engineers premium software products for ambitious teams. Web platforms, design systems, and intelligent automation.',
+    'PrimeSpex delivers end-to-end business solutions — web platforms, design systems, and intelligent automation — engineered for performance and craft.',
   openGraph: {
-    title: 'NexusFlow Labs — Premium Software Agency',
+    title: 'PrimeSpex — Your Business Solutions Partner',
     description:
-      'Premium software product engineering for ambitious teams.',
+      'Your Business Solutions Partner. Premium digital products for ambitious teams.',
     type: 'website',
   },
 };

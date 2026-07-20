@@ -36,10 +36,7 @@ export function SiteHeader() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-semibold tracking-tight md:text-lg">
-            NexusFlow
-          </span>
-          <span className="text-lg font-light text-muted-foreground md:text-lg">
-            Labs
+            PrimeSpex
           </span>
         </Link>
 

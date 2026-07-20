@@ -53,7 +53,7 @@ export function AuthForm() {
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           {mode === 'signin'
-            ? 'Sign in to the NexusFlow admin dashboard'
+            ? 'Sign in to the PrimeSpex admin dashboard'
             : 'Sign up to manage your portfolio and messages'}
         </p>
       </div>
@@ -66,7 +66,7 @@ export function AuthForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="admin@nexusflowlabs.com"
+            placeholder="admin@primespex.com"
             required
             autoComplete="email"
           />

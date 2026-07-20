@@ -17,7 +17,7 @@ export function Contact() {
               inquiry within one business day.
             </p>
             <div className="mt-8 space-y-2 text-sm text-muted-foreground md:text-base">
-              <p>hello@nexusflowlabs.com</p>
+              <p>hello@primespex.com</p>
               <p>Remote — San Francisco, Berlin, Singapore</p>
             </div>
           </div>

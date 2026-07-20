@@ -44,7 +44,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link href="/admin" className="flex items-center gap-2">
             <span className="text-sm font-semibold tracking-tight">
-              NexusFlow
+              PrimeSpex
             </span>
             <span className="text-sm font-light text-muted-foreground">
               Admin
