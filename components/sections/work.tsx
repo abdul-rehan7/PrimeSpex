@@ -1,110 +1,70 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
-import { createSupabaseServer } from '@/lib/supabase/server';
-import type { Portfolio } from '@/lib/types';
+'use client';
 
-export async function Work() {
-  const supabaseServer = createSupabaseServer();
+import { motion } from 'framer-motion';
+import { Plus } from 'lucide-react';
+import { ScrollReveal } from '@/components/motion/ScrollReveal';
+import { SplitTextReveal } from '@/components/motion/SplitTextReveal';
 
-  if (!supabaseServer) {
-    return (
-      <section id="work" className="py-24 md:py-40">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="rounded-xl border border-dashed border-border/60 py-20 text-center">
-            <p className="text-sm text-muted-foreground">
-              Projects will appear here once published from the admin dashboard.
-            </p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const { data: projects } = await supabaseServer
-    .from('portfolio')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(6);
-
+export function Work() {
   return (
-    <section id="work" className="py-24 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-20 flex items-end justify-between">
-          <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-medium uppercase tracking-widest text-muted-foreground md:text-base">
-              Selected work
-            </p>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-6xl">
-              Products we&apos;ve shipped.
-            </h2>
-          </div>
+    <section id="work" className="section-padding bg-[#0a0a0a]">
+      <div className="container-wide">
+        {/* Section header */}
+        <div className="mb-16 md:mb-24 max-w-3xl">
+          <ScrollReveal x={-25} y={0} duration={0.8} className="mb-5 flex items-center gap-3">
+            <span className="w-8 h-px bg-[#444]"></span>
+            <p className="text-eyebrow">Selected work</p>
+          </ScrollReveal>
+          <SplitTextReveal
+            text="Products we've shipped."
+            as="h2"
+            className="text-display-section text-white"
+            staggerDelay={0.06}
+          />
         </div>
 
-        {projects && projects.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project: Portfolio) => (
-              <article
-                key={project.id}
-                className="group overflow-hidden rounded-xl border border-border/60"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                  {project.image_url ? (
-                    <Image
-                      src={project.image_url}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-                      {project.title}
-                    </div>
-                  )}
-                </div>
-                <div className="p-6 md:p-8">
-                  <div className="mb-2 flex items-center justify-between">
-                    <h3 className="text-lg font-medium tracking-tight md:text-xl">
-                      {project.title}
-                    </h3>
-                    {project.project_url && (
-                      <Link
-                        href={project.project_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
-                    )}
-                  </div>
-                  <p className="mb-4 text-sm text-muted-foreground line-clamp-2 md:text-base">
-                    {project.description}
+        {/* Elevated empty state with spinning gradient border */}
+        <ScrollReveal y={50} duration={1.1}>
+          <div className="relative rounded-2xl overflow-hidden p-px">
+            {/* Animated conic-gradient border layer */}
+            <div
+              className="absolute inset-0 rounded-2xl animate-spin-slow opacity-20"
+              style={{
+                background:
+                  'conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.4) 60deg, transparent 120deg, rgba(255,255,255,0.2) 180deg, transparent 240deg, rgba(255,255,255,0.4) 300deg, transparent 360deg)',
+              }}
+            />
+
+            {/* Card content */}
+            <div className="relative rounded-2xl border border-[#1f1f1f] bg-[#0d0d0d] py-28 md:py-40">
+              <div className="flex flex-col items-center justify-center text-center gap-6">
+                {/* Pulsing plus icon */}
+                <motion.div
+                  animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.06, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-12 h-12 rounded-full border border-[#2a2a2a] flex items-center justify-center"
+                >
+                  <Plus className="h-5 w-5 text-[#444]" />
+                </motion.div>
+
+                <div className="space-y-2">
+                  <p className="text-sm text-[#444]">
+                    Projects will appear here once published from the admin dashboard.
                   </p>
-                  {project.tech_stack.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech_stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-md border border-border/60 px-2 py-0.5 text-xs text-muted-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <p className="text-xs text-[#333]">
+                    {'— Admin dashboard at '}
+                    <a
+                      href="/admin"
+                      className="text-[#444] hover:text-[#666] transition-colors duration-200 underline underline-offset-2"
+                    >
+                      /admin
+                    </a>
+                  </p>
                 </div>
-              </article>
-            ))}
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="rounded-xl border border-dashed border-border/60 py-20 text-center">
-            <p className="text-sm text-muted-foreground">
-              Projects will appear here once published from the admin dashboard.
-            </p>
-          </div>
-        )}
+        </ScrollReveal>
       </div>
     </section>
   );

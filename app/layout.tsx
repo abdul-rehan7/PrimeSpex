@@ -1,12 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://primespex.com'),
+  metadataBase: new URL('https://prime-spex-yfse.vercel.app'),
   title: 'PrimeSpex — Your Business Solutions Partner',
   description:
     'PrimeSpex delivers end-to-end business solutions — web platforms, design systems, and intelligent automation — engineered for performance and craft.',
@@ -15,6 +12,12 @@ export const metadata: Metadata = {
     description:
       'Your Business Solutions Partner. Premium digital products for ambitious teams.',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'PrimeSpex — Your Business Solutions Partner',
+    description:
+      'Your Business Solutions Partner. Premium digital products for ambitious teams.',
   },
 };
 
@@ -25,15 +28,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          forcedTheme="dark"
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <head>
+        {/* Google Fonts — loaded via link to bypass next/font network restrictions */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased bg-[#0a0a0a] text-white">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );
