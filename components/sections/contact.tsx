@@ -5,19 +5,41 @@ import { motion } from 'framer-motion';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { ScrollReveal } from '@/components/motion/ScrollReveal';
 import { SplitTextReveal } from '@/components/motion/SplitTextReveal';
+import { getSupabase } from '@/lib/supabase/client';
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    await new Promise((res) => setTimeout(res, 1500));
+    setError(null);
+
+    const formData = new FormData(formRef.current!);
+    const name = (formData.get('name') as string)?.trim();
+    const email = (formData.get('email') as string)?.trim();
+    const message = (formData.get('message') as string)?.trim();
+
+    if (!name || !email || !message) {
+      setError('All fields are required.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    const { error: insertError } = await getSupabase()
+      .from('contacts')
+      .insert({ name, email, message });
+
     setIsSubmitting(false);
-    setSubmitted(true);
+
+    if (insertError) {
+      setError('Something went wrong. Please try again.');
+    } else {
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -147,6 +169,11 @@ export function Contact() {
                       style={{ lineHeight: '1.7' }}
                     />
                   </div>
+
+                  {/* Error message */}
+                  {error && (
+                    <p className="text-sm text-red-400">{error}</p>
+                  )}
 
                   {/* Submit */}
                   <motion.button
