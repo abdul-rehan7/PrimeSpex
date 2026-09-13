@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ArrowRight, X, Menu } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -39,7 +39,7 @@ export function SiteHeader() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  const mobileMenuVariants = {
+  const mobileMenuVariants: Variants = {
     closed: {
       opacity: 0,
       clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
@@ -52,7 +52,7 @@ export function SiteHeader() {
     },
   };
 
-  const linkVariants = {
+  const linkVariants: Variants = {
     closed: { opacity: 0, y: 30 },
     open: (i: number) => ({
       opacity: 1,
